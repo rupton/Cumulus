@@ -964,4 +964,103 @@ private class REL_Relationships_TEST {
         system.assertEquals(null, rel.npe4__Description__c);
     }
 
+    /*********************************************************************************************************
+    * @description Test method for change to Type field only.
+    */
+    static testMethod void testTypeChangeOnly(){
+        if (strTestOnly != '*' && strTestOnly != 'testFieldSyncExclusion') return;
+        
+        setupRelationshipTestData(null);
+        Relationship_Sync_Excluded_Fields__c noDesc = new Relationship_Sync_Excluded_Fields__c(name = 'npe4__description__c');
+        insert noDesc;
+        
+        npe4__Relationship__c crel =  new npe4__Relationship__c(npe4__contact__c = c1.id, npe4__Relatedcontact__c = c2.id, 
+                                           npe4__Type__c='Friend', npe4__Status__c = 'Active', npe4__Description__c='Test Description');
+       
+        
+        insert crel;
+        
+        // check that rel gets created
+        List<npe4__Relationship__c> relList = [select id,npe4__contact__c,npe4__Relatedcontact__c,npe4__Status__c,
+                                          npe4__Type__c, npe4__ReciprocalRelationship__c
+                                          from npe4__Relationship__c where Id= :crel.Id limit 1];
+        // check for mirror rel
+        List<npe4__Relationship__c> mirrorList = [select id,npe4__contact__c,npe4__Relatedcontact__c,npe4__Status__c,
+                                              npe4__Type__c,npe4__ReciprocalRelationship__c  
+                                              from npe4__Relationship__c where npe4__ReciprocalRelationship__c=:relList[0].Id limit 1];
+            
+        //same types
+        System.assertEquals(mirrorList[0].npe4__Type__c, 'Friend');
+        System.assertEquals(relList[0].npe4__Type__c, 'Friend');  
+        
+        // test changing the relationship
+        relList[0].npe4__Type__c = 'Colleague';
+        
+        Test.startTest();
+        update relList[0];
+        Test.stopTest();        
+        
+        // test change to the rel
+        npe4__Relationship__c updated_original = [select id, npe4__Description__c, npe4__Type__c,npe4__ReciprocalRelationship__c 
+                                              from npe4__Relationship__c where id = :relList[0].Id limit 1];
+                                              
+        //original should have updated relationship
+        System.assertEquals('Colleague', updated_original.npe4__Type__c);
+
+        
+        npe4__Relationship__c updated_mirror = [select id, npe4__Type__c, npe4__Description__c, npe4__ReciprocalRelationship__c
+                                              from npe4__Relationship__c where npe4__ReciprocalRelationship__c = :relList[0].Id limit 1];
+        //mirror should have relationship set right
+        System.assertEquals('Colleague', updated_mirror.npe4__Type__c);   
+
+    }
+
+    /*********************************************************************************************************
+    * @description For two contacts with an established relationship, change the gender field of one of the
+    * contacts. Verify the relationship's type has changed per the changed gender, and that the reciprocal
+    * hasn't changed.
+    */
+    static testMethod void testGenderChangeWithMissingReciprocal(){
+        if (strTestOnly != '*' && strTestOnly != 'testGenderChangeWithMissingReciprocal') return;
+
+        // new npe4__Relationship_Settings__c(npe4__Reciprocal_Method__c = 'List Setting', npe4__Gender_Field__c = 'Description')
+        setupRelationshipTestData(null);
+
+        list<Contact> conList = new list<Contact>{
+                new Contact(LastName='foo', Description='Female'),
+                new Contact(LastName='foo2', Description='Male')
+        };
+        insert conList;
+
+        // Disable the relationship trigger so that we can insert a relationships with a blank Recipocal field
+        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.REL, true);
+        npe4__Relationship__c[] crel = new npe4__Relationship__c[]{
+                new npe4__Relationship__c(
+                        npe4__contact__c = conList[0].id,
+                        npe4__Relatedcontact__c = conList[1].id,
+                        npe4__Type__c = 'TestLookupType'),
+                new npe4__Relationship__c(
+                        npe4__contact__c = conList[1].id,
+                        npe4__Relatedcontact__c = conList[0].id,
+                        npe4__Type__c = 'TestLookupType')
+        };
+        insert crel;
+        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.REL, false);
+
+        // validate tha tthe reciprocal relationship field is null
+        crel[0] = [select id, npe4__ReciprocalRelationship__c, npe4__contact__c from npe4__Relationship__c where id = :crel[0].id];
+        system.assertEquals(null, crel[0].npe4__ReciprocalRelationship__c, 'Reciprocal Relationship should be null here');
+
+        // update the Contact and see what happens
+        conList[0].Description='Male';
+        Test.startTest();
+        try {
+            update conList[0];
+            system.assert(true, 'Testing that the above update operation does not throw an exception due to null value in the npe4__ReciprocalRelationship__c field');
+        } catch (exception ex) {
+            system.assert(false, 'The Contact update should not have failed due to the null npe4__ReciprocalRelationship__c field value:' + ex.getMessage());
+        }
+        Test.stopTest();
+
+    }
 }
