@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Cumulus</fullName>
     <types>
@@ -54,6 +54,7 @@
         <members>BDE_BatchEntry_TEST</members>
         <members>BDI_BatchOverride_CTRL</members>
         <members>BDI_BatchOverride_TEST</members>
+        <members>BDI_ContactService</members>
         <members>BDI_DataImportAPI_TEST</members>
         <members>BDI_DataImportBatch_SCHED</members>
         <members>BDI_DataImportBatch_SEL</members>
@@ -61,6 +62,7 @@
         <members>BDI_DataImportCTRL_TEST</members>
         <members>BDI_DataImportDeleteBTN_CTRL</members>
         <members>BDI_DataImportDeleteBTN_TEST</members>
+        <members>BDI_DataImportService</members>
         <members>BDI_DataImport_API</members>
         <members>BDI_DataImport_BATCH</members>
         <members>BDI_DataImport_CTRL</members>
@@ -68,15 +70,21 @@
         <members>BDI_DataImport_TEST2</members>
         <members>BDI_Donations</members>
         <members>BDI_Donations_TEST</members>
+        <members>BDI_DryRun_TEST</members>
         <members>BDI_IMatchDonations</members>
         <members>BDI_IPostProcess</members>
         <members>BDI_MatchDonations</members>
+        <members>BDI_PerfLogger</members>
+        <members>BDI_PerfLogger_TEST</members>
         <members>BDI_PostProcess_TEST</members>
         <members>BDI_SettingsUI_CTRL</members>
         <members>BDI_SettingsUI_TEST</members>
         <members>CAM_CascadeDeleteLookups_TDTM</members>
         <members>CAM_CascadeDeleteLookups_TEST</members>
         <members>CAO_Constants</members>
+        <members>CDL_CascadeDeleteLookups</members>
+        <members>CDL_CascadeDeleteLookups_TDTM</members>
+        <members>CDL_CascadeDeleteLookups_TEST</members>
         <members>CONV_Account_Conversion_BATCH</members>
         <members>CONV_Account_Conversion_BATCH_TEST</members>
         <members>CONV_Account_Conversion_CTRL</members>
@@ -130,10 +138,10 @@
         <members>HH_Container_TEST</members>
         <members>HH_HHObject_TDTM</members>
         <members>HH_HouseholdNaming</members>
-        <members>HH_HouseholdNaming_BATCH</members>
-        <members>HH_HouseholdNaming_TEST</members>
         <members>HH_HouseholdNamingSettingValidator</members>
         <members>HH_HouseholdNamingSettingValidator_TEST</members>
+        <members>HH_HouseholdNaming_BATCH</members>
+        <members>HH_HouseholdNaming_TEST</members>
         <members>HH_Households</members>
         <members>HH_Households_TDTM</members>
         <members>HH_Households_TEST</members>
@@ -215,12 +223,12 @@
         <members>RLLP_OppRollup_TEST2</members>
         <members>RLLP_OppRollup_UTIL</members>
         <members>RLLP_OppSoftCreditRollup_BATCH</members>
+        <members>RP_Constants</members>
         <members>RP_GettingStartedController</members>
         <members>RP_GettingStartedTest</members>
         <members>RP_GitHubClient</members>
         <members>RP_GitHubController</members>
         <members>RP_GitHubTest</members>
-        <members>RP_Constants</members>
         <members>RP_GitHubTestMock</members>
         <members>RP_HTTPClient</members>
         <members>RP_YoutubeClient</members>
@@ -277,8 +285,8 @@
         <members>STG_UninstallScript_TEST</members>
         <members>TDTM_Config_API</members>
         <members>TDTM_Config_API_Test</members>
-        <members>TDTM_DefaultConfig</members>
         <members>TDTM_DMLgt200_TEST</members>
+        <members>TDTM_DefaultConfig</members>
         <members>TDTM_ObjectDataGateway</members>
         <members>TDTM_ProcessControl</members>
         <members>TDTM_Runnable</members>
@@ -293,11 +301,12 @@
         <members>USER_UserService</members>
         <members>USER_UserService_TEST</members>
         <members>UTIL_AbstractRollup_BATCH</members>
-        <members>UTIL_CascadeDeleteLookups_TDTM</members>
         <members>UTIL_Currency</members>
         <members>UTIL_Currency_TEST</members>
         <members>UTIL_CustomSettingsFacade</members>
         <members>UTIL_CustomSettings_API</members>
+        <members>UTIL_DMLService</members>
+        <members>UTIL_DMLService_TEST</members>
         <members>UTIL_Debug</members>
         <members>UTIL_Describe</members>
         <members>UTIL_Describe_TEST</members>
@@ -310,6 +319,8 @@
         <members>UTIL_Namespace</members>
         <members>UTIL_Namespace_TEST</members>
         <members>UTIL_PageMessages_CTRL</members>
+        <members>UTIL_PerfLogger</members>
+        <members>UTIL_PerfLogger_TEST</members>
         <members>UTIL_Profile</members>
         <members>UTIL_Profile_TEST</members>
         <members>UTIL_Query</members>
@@ -325,12 +336,6 @@
         <members>UTIL_UnitTestData_TEST</members>
         <members>UTIL_Version_API</members>
         <members>UTIL_iSoqlListViewConsumer</members>
-        <members>BDI_DataImportService</members>
-        <members>BDI_PerfLogger</members>
-        <members>BDI_ContactService</members>
-        <members>UTIL_PerfLogger</members>
-        <members>UTIL_PerfLogger_TEST</members>
-        <members>BDI_PerfLogger_TEST</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -511,6 +516,7 @@
         <members>Addr_Verification_Settings__c.Auth_Token__c</members>
         <members>Addr_Verification_Settings__c.Class__c</members>
         <members>Addr_Verification_Settings__c.Enable_Automatic_Verification__c</members>
+        <members>Addr_Verification_Settings__c.Prevent_Address_Overwrite__c</members>
         <members>Addr_Verification_Settings__c.Reject_Ambiguous_Addresses__c</members>
         <members>Addr_Verification_Settings__c.Timeout__c</members>
         <members>Addr_Verification_Settings__c.Using_SmartyStreets__c</members>
@@ -745,6 +751,7 @@
         <members>Error_Settings__c.Enable_Debug__c</members>
         <members>Error_Settings__c.Error_Notifications_On__c</members>
         <members>Error_Settings__c.Error_Notifications_To__c</members>
+        <members>Error_Settings__c.Respect_Duplicate_Rule_Settings__c</members>
         <members>Error_Settings__c.Store_Errors_On__c</members>
         <members>Error__c.Context_Type__c</members>
         <members>Error__c.Datetime__c</members>
@@ -873,6 +880,7 @@
         <members>npe01__OppPayment__c.Payment_Acknowledged_Date__c</members>
         <members>npe01__OppPayment__c.Payment_Acknowledgment_Status__c</members>
         <members>npe03__Recurring_Donation__c.Always_Use_Last_Day_Of_Month__c</members>
+        <members>npe03__Recurring_Donations_Settings__c.Recurring_Donation_Batch_Size__c</members>
         <members>npe4__Relationship_Settings__c.Enable_Custom_Field_Sync__c</members>
         <members>npo02__Household__c.Number_of_Household_Members__c</members>
         <members>npo02__Households_Settings__c.Matched_Donor_Role__c</members>
@@ -959,6 +967,7 @@
         <members>CONV_What_This_Tool_Does</members>
         <members>CampaignMemberStatusOmit</members>
         <members>CascadeDeletionError</members>
+        <members>CascadeDeletionErrorLightning</members>
         <members>ClosedWonOpportunities</members>
         <members>ConfirmDeleteAccount</members>
         <members>DeleteAccount</members>
@@ -986,6 +995,29 @@
         <members>REL_RECenter</members>
         <members>REL_Return_to_Contact</members>
         <members>REL_View_Contact_Record</members>
+        <members>RP_CustomerJourneyLinkLabel</members>
+        <members>RP_DeeperParagraph</members>
+        <members>RP_DeeperSubtitle</members>
+        <members>RP_GettingStarted</members>
+        <members>RP_GitHubSubtitle</members>
+        <members>RP_GitHubTitle</members>
+        <members>RP_NpspLinkLabel</members>
+        <members>RP_ProductNameLabel</members>
+        <members>RP_ReleaseGitHub</members>
+        <members>RP_ReleaseNotesLink</members>
+        <members>RP_Remote_Site_Settings_Deactivated</members>
+        <members>RP_SalesforceOrgLinkLabel</members>
+        <members>RP_SubTitle</members>
+        <members>RP_Title</members>
+        <members>RP_TrailheadLinkLabel</members>
+        <members>RP_TrailheadParagraph</members>
+        <members>RP_TrailheadSubtitle</members>
+        <members>RP_USParagraph</members>
+        <members>RP_UsHubLinkLabel</members>
+        <members>RP_UsSubtitle</members>
+        <members>RP_Videos</members>
+        <members>RP_WebinarLinkLabel</members>
+        <members>RP_YoutubeChannel</members>
         <members>RecurringDonationAccountAndContactError</members>
         <members>Saved</members>
         <members>Settings_not_Saved</members>
@@ -1056,6 +1088,14 @@
         <members>bdiDataImporterTitle</members>
         <members>bdiDonation</members>
         <members>bdiDonationMatchingRuleEmpty</members>
+        <members>bdiDryRunBeginButton</members>
+        <members>bdiDryRunMatched</members>
+        <members>bdiDryRunMatchedBest</members>
+        <members>bdiDryRunMatchedId</members>
+        <members>bdiDryRunNoMatch</members>
+        <members>bdiDryRunRecordsError</members>
+        <members>bdiDryRunRecordsValidated</members>
+        <members>bdiDryRunTitle</members>
         <members>bdiErrorBatchNameRequired</members>
         <members>bdiErrorDonationLookupMatch</members>
         <members>bdiErrorDonationMultiMatch</members>
@@ -1280,10 +1320,10 @@
         <members>lblNoHHMergePermissions</members>
         <members>lblPostalCode</members>
         <members>lblProgress</members>
-        <members>lblStatus</members>
         <members>lblRequired</members>
         <members>lblSalutation</members>
         <members>lblState</members>
+        <members>lblStatus</members>
         <members>lblStreet</members>
         <members>lblYouAreHere</members>
         <members>leadConvertAccountName</members>
@@ -1381,29 +1421,6 @@
         <members>pscManageSoftCreditsType</members>
         <members>pscManageSoftCreditsUnaccounted</members>
         <members>pscManageSoftCreditsValidateTotals</members>
-        <members>RP_CustomerJourneyLinkLabel</members>
-        <members>RP_DeeperParagraph</members>
-        <members>RP_DeeperSubtitle</members>
-        <members>RP_GettingStarted</members>
-        <members>RP_GitHubSubtitle</members>
-        <members>RP_GitHubTitle</members>
-        <members>RP_NpspLinkLabel</members>
-        <members>RP_ProductNameLabel</members>
-        <members>RP_ReleaseGitHub</members>
-        <members>RP_ReleaseNotesLink</members>
-        <members>RP_Remote_Site_Settings_Deactivated</members>
-        <members>RP_SalesforceOrgLinkLabel</members>
-        <members>RP_SubTitle</members>
-        <members>RP_Title</members>
-        <members>RP_TrailheadLinkLabel</members>
-        <members>RP_TrailheadParagraph</members>
-        <members>RP_TrailheadSubtitle</members>
-        <members>RP_UsHubLinkLabel</members>
-        <members>RP_USParagraph</members>
-        <members>RP_UsSubtitle</members>
-        <members>RP_Videos</members>
-        <members>RP_WebinarLinkLabel</members>
-        <members>RP_YoutubeChannel</members>
         <members>sendAcknowledgmentFailedStatus</members>
         <members>sendAcknowledgmentFailureReasons</members>
         <members>sendAcknowledgmentFireStatus</members>
@@ -1521,6 +1538,7 @@
         <members>stgHelpPrimaryContactBatch</members>
         <members>stgHelpRDAddCampaign</members>
         <members>stgHelpRDBatch</members>
+        <members>stgHelpRDBatchSize</members>
         <members>stgHelpRDDisableScheduling</members>
         <members>stgHelpRDFailures</members>
         <members>stgHelpRDFieldMap</members>
@@ -1545,6 +1563,7 @@
         <members>stgHelpRelReciprocalName</members>
         <members>stgHelpRelReciprocalNeutral</members>
         <members>stgHelpRelSyncFields</members>
+        <members>stgHelpRespectDuplicateRuleSettings</members>
         <members>stgHelpReviewErrorLog</members>
         <members>stgHelpRollupBatchSize</members>
         <members>stgHelpRollupExcludeAccountOppRT</members>
@@ -1942,6 +1961,12 @@
         <members>npe03__Recurring_Donation__c-iw</members>
         <members>npe03__Recurring_Donation__c-ja</members>
         <members>npe03__Recurring_Donation__c-nl_NL</members>
+        <members>npe03__Recurring_Donations_Settings__c-de</members>
+        <members>npe03__Recurring_Donations_Settings__c-es</members>
+        <members>npe03__Recurring_Donations_Settings__c-fr</members>
+        <members>npe03__Recurring_Donations_Settings__c-iw</members>
+        <members>npe03__Recurring_Donations_Settings__c-ja</members>
+        <members>npe03__Recurring_Donations_Settings__c-nl_NL</members>
         <members>npe4__Relationship_Settings__c-de</members>
         <members>npe4__Relationship_Settings__c-es</members>
         <members>npe4__Relationship_Settings__c-fr</members>
@@ -2045,6 +2070,8 @@
         <members>Batch__c.Open_Batches</members>
         <members>DataImportBatch__c.All</members>
         <members>DataImport__c.All</members>
+        <members>DataImport__c.Dry_Run_Errors</members>
+        <members>DataImport__c.Dry_Run_Validated</members>
         <members>DataImport__c.Failed_Data_Imports</members>
         <members>DataImport__c.Succesfully_Imported</members>
         <members>DataImport__c.To_Be_Imported</members>

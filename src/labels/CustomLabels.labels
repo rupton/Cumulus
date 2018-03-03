@@ -592,8 +592,16 @@
         <categories>Error</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>CascadeDeletionError</shortDescription>
-        <value>Your attempt to delete {0} could not be completed because it is associated with the following records. Delete or re-associate these records and then try deleting {0} again.</value>
+        <shortDescription>Cascade Deletion Error Message In Classic</shortDescription>
+        <value>You can&apos;&apos;t delete {0} because it&apos;&apos;s associated with the following records. Delete or re-associate these records and then try again.&lt;br/&gt;&lt;br/&gt;{1}</value>
+    </labels>
+    <labels>
+        <fullName>CascadeDeletionErrorLightning</fullName>
+        <categories>Error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cascade Deletion Error Message In Lightning Experience</shortDescription>
+        <value>You can&apos;&apos;t delete {0} because it&apos;&apos;s associated with these records: {1}. Delete or re-associate these records and then try again.</value>
     </labels>
     <labels>
         <fullName>ClosedWonOpportunities</fullName>
@@ -1536,6 +1544,70 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>error displayed in Data Importer if no donation matching rules set</shortDescription>
         <value>When Donation matching is enabled, you must select one or more fields in Donation Matching Rule.</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunBeginButton</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>button label for begin Dry Run</shortDescription>
+        <value>Begin Dry Run</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunMatched</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DI Object Status that it was matched in Dry Run</shortDescription>
+        <value>Dry Run - Matched</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunMatchedBest</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>status on a bdi object to specify it was matched from an ambiguous set in Dry Rn</shortDescription>
+        <value>Dry Run - Best Match Used</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunMatchedId</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BDI status when matching an object by its Salesforce ID in Dry Run</shortDescription>
+        <value>Dry Run - Matched by Id</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunNoMatch</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DI Object Status that it was not matched in Dry Run</shortDescription>
+        <value>Dry Run - Matched None</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunRecordsError</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>progress field label</shortDescription>
+        <value>Records with errors:</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunRecordsValidated</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>label on progress widget during Dry Run</shortDescription>
+        <value>Records validated:</value>
+    </labels>
+    <labels>
+        <fullName>bdiDryRunTitle</fullName>
+        <categories>Data Importer</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>title on the progress indicator during dry run mode</shortDescription>
+        <value>NPSP Data Importer - Dry Run</value>
     </labels>
     <labels>
         <fullName>bdiErrorBatchNameRequired</fullName>
@@ -5146,6 +5218,14 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
 This process may take some time, but you can close this page and the process will continue in the background.</value>
     </labels>
     <labels>
+        <fullName>stgHelpRDBatchSize</fullName>
+        <categories>Settings</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RD Batch Size Settings Help Text</shortDescription>
+        <value>The number of records to process at a time when running the Recurring Donations batch job. The default size is 50. Reduce to a smaller number if the batch job is failing due to system limits.</value>
+    </labels>
+    <labels>
         <fullName>stgHelpRDDisableScheduling</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
@@ -5338,6 +5418,15 @@ This process may take some time, but you can close this page and the process wil
         <value>The custom Relationships fields you do not want synchronized between the two contacts in a relationship pair. Control or command click to select more than one field.</value>
     </labels>
     <labels>
+        <fullName>stgHelpRespectDuplicateRuleSettings</fullName>
+        <categories>Settings</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Respect the settings on a Duplicate Rule that control allowing duplicates.</shortDescription>
+        <value>Respect the settings on a Duplicate Rule that control whether duplicate records are allowed.
+To check your existing settings, go to Duplicate Rules under Setup. For any rule, when the Action On Create or Action On Edit fields are set to &quot;Allow,&quot; duplicates will be saved.</value>
+    </labels>
+    <labels>
         <fullName>stgHelpReviewErrorLog</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
@@ -5415,7 +5504,7 @@ This process may take some time, but you can close this page and the process wil
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpRollupPrimaryContact</shortDescription>
-        <value>When this option is selected, Salesforce will ALWAYS roll up donor data to the Opportunity&apos;s Primary Contact, and corresponding Household Account or record, even if the Opportunity is not from an individual (i.e., from a company, a foundation, and so on). If left unselected, and the Opportunity&apos;s Account is an organization, only the organization will receive credit for the Opportunity.</value>
+        <value>When this option is selected, Salesforce will ALWAYS roll up donor data to the Opportunity&apos;s Primary Contact. Note that only the Account on the Opportunity will receive hard credit. So, if the Account Name on the Opportunity is an Organization, that Organization and the Primary Contact will receive hard credit; the Contact&apos;s Household or 1:1 Account will NOT receive hard credit. If left unselected, and the Opportunity&apos;s Account is an Organization, only the Organization will receive credit for the Opportunity.</value>
     </labels>
     <labels>
         <fullName>stgHelpSalesforceSetup</fullName>

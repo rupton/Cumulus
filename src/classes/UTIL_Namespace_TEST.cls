@@ -119,6 +119,9 @@ public with sharing class UTIL_Namespace_TEST {
         str = Label.pmtWizardWarning;
         str = Label.hhCmpDedupLabelReturnToCmp;
         str = Label.sendAcknowledgmentReturnLinkLabel;
+        str = System.Label.stgHelpRespectDuplicateRuleSettings;
+        str = Label.bdiFailed;
+        str = Label.bdiImported;
 
         // The following labels are referenced because the spider was having
         // issues resolving references to them and they need to be directly
