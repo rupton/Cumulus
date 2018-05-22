@@ -303,7 +303,7 @@ private class ALLO_ManageAllocations_TEST {
         retPage = ctrl.saveClose();
         Test.stopTest();
 
-        System.assertNotEquals(null, retPage, 'The return page on success should be provided. Page messages: ' + ApexPages.getMessages());
+        System.assert(ctrl.redirect, 'The page redirect should be set to true. Page messages: ' + ApexPages.getMessages());
 
         actualAllocationsById = new Map<Id, Allocation__c>([SELECT Percent__c, Amount__c FROM Allocation__c WHERE Campaign__c = :campaign.id]);
         System.assertEquals(3, actualAllocationsById.size(), 'New Allocations should be created: ' + actualAllocationsById.values());
@@ -394,21 +394,20 @@ private class ALLO_ManageAllocations_TEST {
      */
     @isTest
     private static void testGetCurrencySymbolCallsUtilCurrency() {
+
+        Test.startTest();
+
         UTIL_Currency_TEST.UtilCurrencyMock mock = new UTIL_Currency_TEST.UtilCurrencyMock();
         mock.getCurrencySymbolReturn = 'FOO';
         UTIL_Currency.instance = mock;
 
         ALLO_ManageAllocations_CTRL controller = new ALLO_ManageAllocations_CTRL();
+        controller.parentCurrencyCode = 'FOO';
         controller.parentId = UTIL_UnitTestData_TEST.MOCK_ACCOUNT_ID;
 
         System.assertEquals(
             'FOO',
             controller.getCurrencySymbol()
-        );
-
-        System.assertEquals(
-            controller.parentId,
-            mock.getCurrencySymbolRecordId
         );
     }
 

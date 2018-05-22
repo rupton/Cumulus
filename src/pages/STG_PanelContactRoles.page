@@ -34,28 +34,6 @@
                     </apex:outputPanel>
                 </div>
             </div>
-        </div>
-        <div class="slds-section-title--divider" >{!$Label.stgLabelSoftCredit}</div>
-        <div class="slds-form--horizontal slds-m-around--large">
-            <div class="slds-form-element">
-                <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.npo02__Enable_Soft_Credit_Rollups__c.Label}" for="cbxESCR" styleClass="slds-form-element__label" />
-                <div class="slds-form-element__control">
-                    <apex:inputCheckbox value="{!stgService.stgHH.npo02__Enable_Soft_Credit_Rollups__c}" rendered="{!isEditMode}" id="cbxESCR" html-aria-describedby="{!$Component.cbxESCRHelp}" styleClass="slds-checkbox"/>
-                    <apex:inputCheckbox value="{!stgService.stgHH.npo02__Enable_Soft_Credit_Rollups__c}" rendered="{!isReadOnlyMode}" disabled="true" id="cbxESCRO" html-aria-describedby="{!$Component.cbxESCRHelp}" styleClass="slds-checkbox"/>
-                    <apex:outputPanel id="cbxESCRHelp" layout="block">
-                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.stgHelpEnableSoftCreditRollups}" />
-                    </apex:outputPanel>
-                </div>
-            </div>
-            <div class="slds-form-element">
-                <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.npo02__Soft_Credit_Roles__c.Label}" for="idDBMS" styleClass="slds-form-element__label" />
-                <div class="slds-form-element__control">
-                    <c:STG_DataBoundMultiSelect settingObject="{!stgService.stgHH}" fieldname="npo02__Soft_Credit_Roles__c" listSO="{!listSOOppContactRoles}" inEditMode="{!isEditMode}" />
-                    <apex:outputPanel layout="block">
-                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.stgHelpSoftCreditRoles}" />
-                    </apex:outputPanel>
-                </div>
-            </div>
             <div class="slds-form-element">
                 <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.Matched_Donor_Role__c.Label}" for="slMDR" styleClass="slds-form-element__label" />
                 <div class="slds-form-element__control">
@@ -65,6 +43,28 @@
                     </apex:selectList>
                     <apex:outputPanel id="slMDRHelp" layout="block">
                         <apex:outputText styleClass="slds-form-element__help" value="{!$Label.stgHelpMatchedDonorRole}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+        </div>
+        <div class="slds-section-title--divider" style="{!IF(!stgService.stgCRLP.Customizable_Rollups_Enabled__c, 'display:block', 'display:none')}">{!$Label.stgLabelSoftCredit}</div>
+        <div class="slds-form--horizontal slds-m-around--large">
+            <div class="slds-form-element" style="{!IF(!stgService.stgCRLP.Customizable_Rollups_Enabled__c, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.npo02__Enable_Soft_Credit_Rollups__c.Label}" for="cbxESCR" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:inputCheckbox value="{!stgService.stgHH.npo02__Enable_Soft_Credit_Rollups__c}" rendered="{!isEditMode}" id="cbxESCR" html-aria-describedby="{!$Component.cbxESCRHelp}" styleClass="slds-checkbox"/>
+                    <apex:inputCheckbox value="{!stgService.stgHH.npo02__Enable_Soft_Credit_Rollups__c}" rendered="{!isReadOnlyMode}" disabled="true" id="cbxESCRO" html-aria-describedby="{!$Component.cbxESCRHelp}" styleClass="slds-checkbox"/>
+                    <apex:outputPanel id="cbxESCRHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.stgHelpEnableSoftCreditRollups}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element" style="{!IF(!stgService.stgCRLP.Customizable_Rollups_Enabled__c, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.npo02__Soft_Credit_Roles__c.Label}" for="idDBMS" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <c:STG_DataBoundMultiSelect settingObject="{!stgService.stgHH}" fieldname="npo02__Soft_Credit_Roles__c" listSO="{!listSOOppContactRoles}" inEditMode="{!isEditMode}" />
+                    <apex:outputPanel layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.stgHelpSoftCreditRoles}" />
                     </apex:outputPanel>
                 </div>
             </div>
